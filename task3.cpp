@@ -1,50 +1,64 @@
 #include <iostream>
 using namespace std;
 
+struct Student
+{
+    int studentID;
+    int completeCredits;
+    double CGPA;
+};
+
 int main()
 {
-    int arr_size, flag=0;
-    int array[arr_size];
-    cout<<"Enter the size of Array: ";
-    cin>>arr_size;
+   struct Student S[10];
+   int i, n = 0;
+bool check[10]={0};
 
-
-    cout<<"Enter the numbers of Array: ";
-    for(int i=0; i<arr_size; i++)
-    {
-        cin >> array[i];
-    }
-
-    cout<<"The Array with duplicate: ";
-    for(int i=0; i<arr_size; i++)
-    {
-        cout << array[i] << " "<<endl;
-    }
-
-
-        cout<<"The New Array without duplicate: ";
-    for (int i = 0; i < arr_size; i++)
-    {
-        int j;
-        for(j = 0; j < i; j++)
-        {
-            if (array[i] == array[j])
+   for(i=0; i<10; i++)
+   {
+       cout << "  " << (i + 1) << "th Student's Info"<< endl;
+       cout<<"Unique ID: ";
+       cin>>n;
+       if((n >= 0) && (n <= 9))
+       {
+           if (check[n] == false)
             {
-                flag = 1;
-                break;
+                S[i].studentID = n;
+              check[n] = true;
+                cout<<"Number Of Credit Completed: ";
+                cin>>S[i].completeCredits;
+               cout<<"CGPA: ";
+               cin>>S[i].CGPA;
             }
-        }
 
-        if (i == j)
-        {
-            cout << array[i] << " ";
-        }
-    }
+            else
+            {
+                cout << "Student ID is repeated." << endl;
+                i--;
+            }
+       }
 
-    if(flag == 0)
-    {
-        cout<<"Array already unique!";
-    }
-    cout << endl << endl;
-    return 0;
+       cout<<endl;
+   }
+   cout<<endl;
+   cout<<"Student’s ID whose CGPA is more than 3.75 : ";
+   for(i=0;i<10;i++)
+   {
+       if(S[i].CGPA > 3.75)
+       {
+            cout<<S[i].studentID<<endl;
+       }
+   }
+   cout<<endl;
+   cout<<"Student’s ID who has completed more than 50 credits : ";
+   for(i=0;i<10;i++)
+   {
+       if(S[i].completeCredits > 50)
+       {
+            cout<<S[i].studentID<<endl;
+       }
+   }
+   cout<<endl<<endl;
+   return 0;
 }
+
