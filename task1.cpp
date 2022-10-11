@@ -1,41 +1,53 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-   int a[10][10],transpose[10][10],row,column,i,j;
-//Input row column number
-   cout << "Enter the number of rows and columns of matrix: ";
-   cin >> row >> column;
-//Input elements
-   cout << "Enter elements of matrix: " << endl;
-for (int i = 0; i < row; ++i) {
-      for (int j = 0; j < column; ++j) {
-         cout << "Enter element a" << i + 1 << j + 1 << ": ";
-         cin >> a[i][j];
-      }
-   }
-//Printing inputted matrix
-   cout << "Entered Matrix: " << endl;
-   for (int i = 0; i < row; ++i) {
-      for (int j = 0; j < column; ++j) {
-         cout << " " << a[i][j];
-         if (j == column - 1)
-            cout << endl << endl;
-      }
-   }
-//Showing Transpose Matrix
-   for (int i = 0; i < row; ++i)
-      for (int j = 0; j < column; ++j) {
-         transpose[j][i] = a[i][j];
-      }
+int main()
+{
+    int arr_size_1, arr_size_2;
+    cout<<"Enter the size of Array 1: ";
+    cin>>arr_size_1;
+    cout<<"Enter the size of Array 2: ";
+    cin>>arr_size_2;
 
-   cout << "Transpose of Matrix: " << endl;
-   for (int i = 0; i < column; ++i)
-      for (int j = 0; j < row; ++j) {
-         cout << " " << transpose[i][j];
-         if (j == row - 1)
-            cout << endl << endl;
-      }
+    int array1[arr_size_1], array2[arr_size_2], array3[arr_size_1+arr_size_2];
 
-   return 0;
+    cout<<" Enter the numbers for Array 1: ";
+    for(int i=0; i<arr_size_1; i++)
+    {
+        cin >> array1[i];
+    }
+
+    cout<<" Enter the numbers for Array 2: ";
+    for(int i=0; i<arr_size_2; i++)
+    {
+        cin >> array2[i];
+    }
+
+    int j = 0;
+    for(int i = 0 ; i < arr_size_1+arr_size_2; i++)
+    {
+        if(i < arr_size_1)
+        {
+            array3[i] = array1[i];
+        }
+        else
+        {
+            array3[i] = array2[j];
+            j++;
+        }
+    }
+
+    cout << "The Merging Array is: ";
+    for (int i = 0; i < arr_size_1+arr_size_2; i++)
+    {
+        cout<< array3[i] <<" ";
+        cout<<endl;
+    }
+
+    cout << "The Reversed Merging Array is: ";
+    for (int i = arr_size_1+arr_size_2-1; i >= 0; i--)
+    {
+        cout << array3[i] <<" ";
+    }
+    return 0;
 }
